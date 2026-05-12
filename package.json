@@ -1,0 +1,27 @@
+{
+  "name": "devops-bc-timetracker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Azure DevOps work item extension for logging time to Microsoft Dynamics 365 Business Central.",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "package": "npm run build && tfx extension create --manifest-globs vss-extension.json --output-path dist/vsix",
+    "validate": "npm run typecheck && npm test && npm run build"
+  },
+  "dependencies": {
+    "azure-devops-extension-sdk": "^4.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "copy-webpack-plugin": "^12.0.2",
+    "ts-loader": "^9.5.1",
+    "tfx-cli": "^0.18.0",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^5.1.4"
+  }
+}

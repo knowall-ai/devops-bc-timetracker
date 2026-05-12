@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Business Central Time Tracker</title>
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
+    <main id="app" class="shell" aria-live="polite">
+      <section class="header">
+        <div>
+          <h1>Time Tracking</h1>
+          <p id="work-item-summary">Loading work item...</p>
+        </div>
+        <span id="connection-badge" class="badge neutral">Disconnected</span>
+      </section>
+
+      <section class="panel" id="settings-panel">
+        <div class="panel-heading">
+          <h2>Business Central Connection</h2>
+          <button id="toggle-settings" class="link-button" type="button">Hide</button>
+        </div>
+        <form id="settings-form" class="grid-form">
+          <label>
+            Tenant ID
+            <input id="tenant-id" name="tenantId" autocomplete="off" required />
+          </label>
+          <label>
+            Entra App Client ID
+            <input id="client-id" name="clientId" autocomplete="off" required />
+          </label>
+          <label>
+            Environment
+            <input id="environment" name="environment" autocomplete="off" placeholder="production" required />
+          </label>
+          <label>
+            Company ID
+            <input id="company-id" name="companyId" autocomplete="off" required />
+          </label>
+          <label>
+            Employee ID
+            <input id="employee-id" name="employeeId" autocomplete="off" placeholder="Optional if email lookup works" />
+          </label>
+          <label>
+            Default Job Number
+            <input id="default-job-number" name="defaultJobNumber" autocomplete="off" placeholder="Optional" />
+          </label>
+          <div class="actions">
+            <button id="save-settings" class="secondary-button" type="submit">Save Settings</button>
+            <button id="connect-bc" class="primary-button" type="button">Connect</button>
+          </div>
+        </form>
+      </section>
+
+      <section id="auth-callback-panel" class="panel hidden">
+        <h2>Completing Sign-In</h2>
+        <p>Finishing Microsoft authentication...</p>
+      </section>
+
+      <section id="entry-panel" class="panel">
+        <div class="panel-heading">
+          <h2>Log Time</h2>
+          <button id="show-settings" class="link-button" type="button">Settings</button>
+        </div>
+        <form id="time-entry-form" class="entry-form">
+          <div class="row">
+            <label>
+              Date
+              <input id="entry-date" name="date" type="date" required />
+            </label>
+            <label>
+              Hours
+              <input id="entry-hours" name="hours" type="number" min="0.25" max="24" step="0.25" required />
+            </label>
+          </div>
+          <label>
+            Business Central Job Number
+            <input id="entry-job-number" name="jobNumber" autocomplete="off" placeholder="Optional" />
+          </label>
+          <label>
+            Description
+            <textarea id="entry-description" name="description" rows="3" maxlength="180" placeholder="What was done?"></textarea>
+          </label>
+          <button id="submit-entry" class="primary-button full" type="submit">Log Time to Business Central</button>
+        </form>
+      </section>
+
+      <section id="history-panel" class="panel">
+        <div class="panel-heading">
+          <h2>Work Item Time</h2>
+          <button id="refresh-history" class="secondary-button compact" type="button">Refresh</button>
+        </div>
+        <div class="total-row">
+          <span>Total</span>
+          <strong id="total-hours">0.00h</strong>
+        </div>
+        <div id="entry-list" class="entry-list">
+          <p class="empty">No entries loaded yet.</p>
+        </div>
+      </section>
+
+      <p id="status-line" class="status-line"></p>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>

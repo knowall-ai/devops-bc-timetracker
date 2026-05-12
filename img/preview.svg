@@ -1,0 +1,21 @@
+<svg width="660" height="320" viewBox="0 0 660 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="660" height="320" rx="16" fill="#F6F7F9"/>
+  <rect x="32" y="28" width="596" height="64" rx="8" fill="#FFFFFF" stroke="#D7DCE2"/>
+  <text x="56" y="56" font-family="Segoe UI, Arial" font-size="20" font-weight="700" fill="#1F2328">Time Tracking</text>
+  <text x="56" y="78" font-family="Segoe UI, Arial" font-size="13" fill="#667085">Task #1284: Reconcile customer billing bug</text>
+  <rect x="504" y="48" width="92" height="24" rx="12" fill="#DCFAE6"/>
+  <text x="522" y="65" font-family="Segoe UI, Arial" font-size="12" font-weight="700" fill="#067647">Connected</text>
+  <rect x="32" y="112" width="286" height="168" rx="8" fill="#FFFFFF" stroke="#D7DCE2"/>
+  <text x="56" y="144" font-family="Segoe UI, Arial" font-size="17" font-weight="700" fill="#1F2328">Log Time</text>
+  <rect x="56" y="162" width="98" height="36" rx="5" fill="#FFFFFF" stroke="#D7DCE2"/>
+  <rect x="168" y="162" width="98" height="36" rx="5" fill="#FFFFFF" stroke="#D7DCE2"/>
+  <rect x="56" y="212" width="210" height="38" rx="5" fill="#0078D4"/>
+  <text x="96" y="236" font-family="Segoe UI, Arial" font-size="13" font-weight="700" fill="white">Log Time</text>
+  <rect x="342" y="112" width="286" height="168" rx="8" fill="#FFFFFF" stroke="#D7DCE2"/>
+  <text x="366" y="144" font-family="Segoe UI, Arial" font-size="17" font-weight="700" fill="#1F2328">Work Item Time</text>
+  <text x="542" y="144" font-family="Segoe UI, Arial" font-size="17" font-weight="700" fill="#1F2328">6.25h</text>
+  <rect x="366" y="164" width="238" height="74" rx="6" fill="#FFFFFF" stroke="#D7DCE2"/>
+  <text x="384" y="190" font-family="Segoe UI, Arial" font-size="13" font-weight="700" fill="#1F2328">2026-05-11</text>
+  <text x="548" y="190" font-family="Segoe UI, Arial" font-size="13" font-weight="700" fill="#1F2328">2.50h</text>
+  <text x="384" y="215" font-family="Segoe UI, Arial" font-size="12" fill="#667085">ADO Work Item #1284: Task...</text>
+</svg>

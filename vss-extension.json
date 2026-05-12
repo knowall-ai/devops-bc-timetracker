@@ -1,0 +1,57 @@
+{
+  "manifestVersion": 1,
+  "id": "bc-timetracker",
+  "name": "Business Central Time Tracker",
+  "version": "1.0.0",
+  "publisher": "knowall-ai",
+  "description": "Track time on Azure DevOps work items and sync entries to Microsoft Dynamics 365 Business Central.",
+  "public": false,
+  "categories": ["Azure Boards"],
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "icons": {
+    "default": "dist/img/logo.svg"
+  },
+  "content": {
+    "details": {
+      "path": "dist/README.md"
+    },
+    "license": {
+      "path": "dist/TERMS.md"
+    }
+  },
+  "links": {
+    "support": {
+      "uri": "https://github.com/knowall-ai/devops-bc-timetracker/issues"
+    },
+    "repository": {
+      "uri": "https://github.com/knowall-ai/devops-bc-timetracker"
+    },
+    "privacypolicy": {
+      "uri": "https://github.com/knowall-ai/devops-bc-timetracker/blob/main/PRIVACY.md"
+    }
+  },
+  "scopes": ["vso.work", "vso.work_write"],
+  "contributions": [
+    {
+      "id": "bc-timetracker-work-item-form",
+      "type": "ms.vss-work-web.work-item-form-group",
+      "description": "Log time to Business Central from the current work item.",
+      "targets": ["ms.vss-work-web.work-item-form"],
+      "properties": {
+        "name": "Time Tracking",
+        "uri": "dist/time-tracker.html",
+        "height": 520
+      }
+    }
+  ],
+  "files": [
+    {
+      "path": "dist",
+      "addressable": true
+    }
+  ]
+}

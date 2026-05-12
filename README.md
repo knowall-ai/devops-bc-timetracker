@@ -1,49 +1,52 @@
 # Business Central Time Tracker for Azure DevOps
 
-Track time on Azure DevOps work items and sync seamlessly to Microsoft Dynamics 365 Business Central.
-
-## Overview
-
-This Azure DevOps extension adds time tracking capabilities directly within work items, allowing teams to log time and automatically sync entries to Business Central's timesheet system.
+An Azure DevOps work item extension for logging time directly to Microsoft Dynamics 365 Business Central.
 
 ## Features
 
-- **Manual Time Entry** - Add time entries with date, duration, and description directly from work items
-- **Time History** - View all time entries logged for each work item
-- **Business Central Integration** - Automatic synchronization with BC timeRegistrationEntry API
-- **OAuth Authentication** - Secure authentication via Microsoft Entra ID
+- Adds a **Time Tracking** group to Azure DevOps work item forms.
+- Logs date, hours, description, and optional job number to Business Central `timeRegistrationEntries`.
+- Finds the Business Central employee from the Azure DevOps user email, with a manual Employee ID fallback.
+- Uses Microsoft Entra ID OAuth 2.0 with PKCE, so no client secret is stored in the browser.
+- Shows Business Central time entries linked to the current work item by a stable `ADO Work Item #<id>` marker.
 
-## Architecture
+## Setup
 
-**Extension Type**: Work Item Form Extension
-**Target Platform**: Azure DevOps Services & Server
-**Integration**: Business Central API v2.0
-**Authentication**: OAuth 2.0 (Microsoft Entra ID)
+1. Create or reuse a Microsoft Entra ID public client application.
+2. Add the extension URL as a redirect URI after the Azure DevOps extension is published.
+3. Grant delegated Business Central API permissions that can read employees and create time registration entries.
+4. Install the extension in Azure DevOps.
+5. Open any work item, expand **Time Tracking**, and save:
+   - Tenant ID
+   - Entra App Client ID
+   - Business Central environment, for example `production` or `sandbox`
+   - Business Central company ID
+   - optional Employee ID fallback
+   - optional default job number
+6. Connect to Business Central, then log time from the work item form.
 
-## Development Status
+## Development
 
-This project is currently in planning phase. See [Issue #1](https://github.com/knowall-ai/devops-bc-timetracker/issues/1) for complete implementation details and technical specifications.
+```bash
+npm install
+npm run validate
+npm run package
+```
 
-## Reference Implementations
+`npm run package` builds the extension and writes a VSIX package under `dist/vsix`.
 
-- [Harvest Time Tracking for Azure DevOps](https://marketplace.visualstudio.com/items?itemName=SaaSKit.HarvestTimeTrackingForAzureDevOps)
-- [Zendesk BC TimeTracker](https://github.com/knowall-ai/zendesk-bc-timetracker)
+## Implementation Notes
 
-## Documentation
+The extension is intentionally client-only because Azure DevOps work item form extensions run in an iframe. Tokens and settings are stored in browser local storage for the signed-in user. The OAuth flow uses PKCE and refresh tokens from Microsoft identity platform; a confidential client secret is not required.
 
-- [Azure DevOps Extension Development](https://learn.microsoft.com/en-us/azure/devops/extend/)
+Each created Business Central entry includes the Azure DevOps work item marker in its description so the extension can list entries for the current work item later.
+
+## References
+
+- [Azure DevOps extension SDK](https://github.com/microsoft/azure-devops-extension-sdk)
 - [Business Central API v2.0](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/api-reference/v2.0/)
-- [timeRegistrationEntry Resource](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/api-reference/v2.0/resources/dynamics_timeregistrationentry)
-
-## Contributing
-
-Contributions are welcome! Please check [Issue #1](https://github.com/knowall-ai/devops-bc-timetracker/issues/1) for the complete development roadmap and technical specifications.
+- [timeRegistrationEntry resource](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/api-reference/v2.0/resources/dynamics_timeregistrationentry)
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) file for details.
-
-## Contact
-
-**Organization**: KnowAll.ai
-**Email**: ben.weeks@outlook.com
+MIT License - see [LICENSE](LICENSE).
