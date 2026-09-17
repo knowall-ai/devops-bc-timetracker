@@ -1,5 +1,7 @@
 # Business Central Time Tracker for Azure DevOps
 
+[![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/knowall-ai/devops-bc-timetracker?label=CodeRabbit+Reviews&labelColor=171717&color=FF570A)](https://coderabbit.ai)
+
 Track time on Azure DevOps work items and sync seamlessly to Microsoft Dynamics 365 Business Central.
 
 ## Overview
